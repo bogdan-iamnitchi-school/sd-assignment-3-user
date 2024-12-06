@@ -100,7 +100,7 @@ properties:
           - name: MYSQL_PASSWORD
             value: dms@123
         ports:
-          - port: 3307
+          - port: 3306
 
     # Device Microservice
     - name: device-microservice
@@ -116,9 +116,9 @@ properties:
           - name: KEYCLOAK_REALM
             value: "energy-app"
           - name: DB_IP
-            value: "bogdaniamnitchi30641user.germanywestcentral.azurecontainer.io"
+            value: "dms-mysql"
           - name: DB_PORT
-            value: "3307"
+            value: "3306"
           - name: DB_USER
             value: "dms_user"
           - name: DB_PASSWORD
@@ -141,8 +141,6 @@ properties:
         port: 3306
       - protocol: tcp
         port: 8081
-      - protocol: tcp
-        port: 3307
       - protocol: tcp
         port: 8082
   imageRegistryCredentials:
