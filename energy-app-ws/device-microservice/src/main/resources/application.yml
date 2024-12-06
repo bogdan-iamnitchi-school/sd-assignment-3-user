@@ -46,7 +46,7 @@ logging:
   level:
     root: error
     org:
-      springframework: debug
+      springframework: error
       biamn: debug
 
 ###############################################

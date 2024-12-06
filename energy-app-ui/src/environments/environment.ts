@@ -1,8 +1,8 @@
 export const environment = {
-  usersURL: 'http://bogdaniamnitchi30641user.germanywestcentral.azurecontainer.io:8081',
+  usersURL: 'http://user-containergroup.germanywestcentral.azurecontainer.io:8081',
   usersPath: '/api/v1/user',
 
-  deviceURL: 'http://bogdaniamnitchi30641user.germanywestcentral.azurecontainer.io:8082',
+  deviceURL: 'http://device-containergroup.germanywestcentral.azurecontainer.io:8082',
   devicesPath: '/api/v1/device',
   deviceUsersPath: '/api/v1/device/user',
 
@@ -13,7 +13,7 @@ export const environment = {
 
   chatURL: 'http://chat.localhost',
 
-  keycloakURL: 'http://bogdaniamnitchi30641user.germanywestcentral.azurecontainer.io:9980',
+  keycloakURL: 'http://keycloak-containergroup.germanywestcentral.azurecontainer.io:8080',
   keycloakRealm: 'energy-app',
   keycloakClientId: 'energy-app-id',
 };
