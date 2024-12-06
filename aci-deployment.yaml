@@ -80,8 +80,8 @@ properties:
             value: user_db
         ports:
           - port: 8081
-      dependsOn:
-        - ums-mysql
+        dependsOn:
+          - ums-mysql
 
     # dms-mysql Service
     - name: dms-mysql
