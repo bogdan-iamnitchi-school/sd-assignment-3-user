@@ -14,8 +14,8 @@ variables:
   containerRegistry: 'containerregistrybogdaniamnitchi30641.azurecr.io'
   tag: '$(Build.BuildId)'
 
-  # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  # Agent pool name
+  agentPoolName: 'local'  # This is where we specify the local agent pool
 
 stages:
 - stage: Build
@@ -24,7 +24,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      vmImage: $(vmImageName)
+      name: $(agentPoolName)  # Use the local agent pool
     steps:
     # Step 1: Build and push frontend image
     - task: Docker@2
@@ -55,6 +55,28 @@ stages:
         command: buildAndPush
         repository: 'device-microservice'
         dockerfile: '$(Build.SourcesDirectory)/energy-app-ws/device-microservice/Dockerfile'
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          latest
+
+    # Step 4: Build and push MySQL image
+    - task: Docker@2
+      displayName: Build and push MySQL image
+      inputs:
+        command: buildAndPush
+        repository: 'mysql'
+        dockerfile: '$(Build.SourcesDirectory)/docker/mysql/Dockerfile'
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          latest
+
+    # Step 5: Build and push Keycloak image
+    - task: Docker@2
+      displayName: Build and push Keycloak image
+      inputs:
+        command: buildAndPush
+        repository: 'keycloak'
+        dockerfile: '$(Build.SourcesDirectory)/docker/keycloak/Dockerfile'
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           latest
