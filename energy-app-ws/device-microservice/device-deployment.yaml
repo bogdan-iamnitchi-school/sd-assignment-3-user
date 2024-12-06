@@ -8,8 +8,8 @@ properties:
         image: containerregistrybogdaniamnitchi30641.azurecr.io/mysql:5.7
         resources:
           requests:
-            cpu: 2
-            memoryInGb: 2
+            cpu: 1
+            memoryInGb: 1
         environmentVariables:
           - name: MYSQL_ROOT_PASSWORD
             value: admin@123
@@ -28,8 +28,8 @@ properties:
         image: containerregistrybogdaniamnitchi30641.azurecr.io/device-microservice:latest
         resources:
           requests:
-            cpu: 2
-            memoryInGb: 2
+            cpu: 1
+            memoryInGb: 1
         environmentVariables:
           - name: KEYCLOAK_HOST
             value: "bogdaniamnitchi30641user.germanywestcentral.azurecontainer.io:9980"
