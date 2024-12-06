@@ -24,35 +24,35 @@ stages:
     pool:
       name: $(agentPoolName)
     steps:
-#    - task: Docker@2
-#      displayName: Build and push frontend image
-#      inputs:
-#        command: buildAndPush
-#        repository: 'frontend'
-#        dockerfile: '$(Build.SourcesDirectory)/energy-app-ui/Dockerfile'
-#        containerRegistry: $(dockerRegistryServiceConnection)
-#        tags: |
-#          latest
+    - task: Docker@2
+      displayName: Build and push frontend image
+      inputs:
+        command: buildAndPush
+        repository: 'frontend'
+        dockerfile: '$(Build.SourcesDirectory)/energy-app-ui/Dockerfile'
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          latest
 #
-#    - task: Docker@2
-#      displayName: Build and push Keycloak image
-#      inputs:
-#        command: buildAndPush
-#        repository: 'keycloak'
-#        dockerfile: '$(Build.SourcesDirectory)/docker/keycloak/Dockerfile'
-#        containerRegistry: $(dockerRegistryServiceConnection)
-#        tags: |
-#          latest
+    - task: Docker@2
+      displayName: Build and push Keycloak image
+      inputs:
+        command: buildAndPush
+        repository: 'keycloak'
+        dockerfile: '$(Build.SourcesDirectory)/docker/keycloak/Dockerfile'
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          latest
 
-#    - task: Docker@2
-#      displayName: Build and push ums mysql image
-#      inputs:
-#        command: buildAndPush
-#        repository: 'ums-mysql'
-#        dockerfile: '$(Build.SourcesDirectory)/energy-app-ws/user-microservice/mysql/Dockerfile'
-#        containerRegistry: $(dockerRegistryServiceConnection)
-#        tags: |
-#          latest
+    - task: Docker@2
+      displayName: Build and push mysql image
+      inputs:
+        command: buildAndPush
+        repository: 'mysql'
+        dockerfile: '$(Build.SourcesDirectory)/docker/mysql/Dockerfile'
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          "5.7"
 
     - task: Docker@2
       displayName: Build and push user microservice image
@@ -64,16 +64,6 @@ stages:
         tags: |
           latest
 
-#    - task: Docker@2
-#      displayName: Build and push dms mysql image
-#      inputs:
-#        command: buildAndPush
-#        repository: 'mysql'
-#        dockerfile: '$(Build.SourcesDirectory)/energy-app-ws/device-microservice/mysql/Dockerfile'
-#        containerRegistry: $(dockerRegistryServiceConnection)
-#        tags: |
-#          "5.7"
-#
     - task: Docker@2
       displayName: Build and push device microservice image
       inputs:
