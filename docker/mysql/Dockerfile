@@ -1,8 +1,3 @@
 FROM mysql:5.7
 
-ENV MYSQL_ROOT_PASSWORD=admin@123
-ENV MYSQL_DATABASE=default_db
-ENV MYSQL_USER=mysql_user
-ENV MYSQL_PASSWORD=mysql_password
-
 EXPOSE 3306

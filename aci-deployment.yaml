@@ -34,8 +34,7 @@ properties:
             value: admin
         ports:
           - port: 8080
-        command:
-          - start-dev
+
 
     # ums-mysql Service
     - name: ums-mysql
