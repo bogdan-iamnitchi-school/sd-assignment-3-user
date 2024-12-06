@@ -34,9 +34,6 @@ properties:
             value: admin
         ports:
           - port: 8080
-        volumeMounts:
-          - name: keycloak-data
-            mountPath: /opt/keycloak/data
         command:
           - start-dev
 
