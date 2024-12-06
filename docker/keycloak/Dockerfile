@@ -7,8 +7,13 @@ COPY ./data /opt/keycloak/data
 ENV KEYCLOAK_ADMIN=admin
 ENV KEYCLOAK_ADMIN_PASSWORD=admin
 
+RUN whoami
+
 # Ensure the Keycloak script is executable
 RUN chmod +x /opt/keycloak/bin/kc.sh
+
+# Change ownership of the data directory to the Keycloak user
+RUN chown -R keycloak:keycloak /opt/keycloak/data
 
 # Grant full permissions to the data directory
 RUN chmod -R 777 /opt/keycloak/data
