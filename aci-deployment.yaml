@@ -22,7 +22,7 @@ properties:
     # Keycloak Service
     - name: keycloak
       properties:
-        image: containerregistrybogdaniamnitchi30641.azurecr.io/keycloak:24.0.2
+        image: containerregistrybogdaniamnitchi30641.azurecr.io/keycloak:latest
         resources:
           requests:
             cpu: 1
@@ -43,7 +43,7 @@ properties:
     # ums-mysql Service
     - name: ums-mysql
       properties:
-        image: containerregistrybogdaniamnitchi30641.azurecr.io/mysql:5.7
+        image: containerregistrybogdaniamnitchi30641.azurecr.io/mysql:latest
         resources:
           requests:
             cpu: 1
@@ -89,7 +89,7 @@ properties:
     # dms-mysql Service
     - name: dms-mysql
       properties:
-        image: containerregistrybogdaniamnitchi30641.azurecr.io/mysql:5.7
+        image: containerregistrybogdaniamnitchi30641.azurecr.io/mysql:latest
         resources:
           requests:
             cpu: 1
