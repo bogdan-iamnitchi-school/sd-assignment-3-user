@@ -10,7 +10,7 @@ properties:
         resources:
           requests:
             cpu: 1
-            memoryInGb: 1.5
+            memoryInGb: 1
         environmentVariables:
           - name: KEYCLOAK_HOST
             value: keycloak
@@ -25,7 +25,7 @@ properties:
         image: containerregistrybogdaniamnitchi30641.azurecr.io/keycloak:latest
         resources:
           requests:
-            cpu: 1
+            cpu: 0.5
             memoryInGb: 1
         environmentVariables:
           - name: KEYCLOAK_ADMIN
@@ -43,7 +43,7 @@ properties:
         image: containerregistrybogdaniamnitchi30641.azurecr.io/mysql:latest
         resources:
           requests:
-            cpu: 1
+            cpu: 0.5
             memoryInGb: 1
         environmentVariables:
           - name: MYSQL_ROOT_PASSWORD
@@ -62,7 +62,7 @@ properties:
         resources:
           requests:
             cpu: 1
-            memoryInGb: 1
+            memoryInGb: 0.5
         environmentVariables:
           - name: KEYCLOAK_HOST
             value: keycloak
@@ -89,7 +89,7 @@ properties:
         image: containerregistrybogdaniamnitchi30641.azurecr.io/mysql:latest
         resources:
           requests:
-            cpu: 1
+            cpu: 0.5
             memoryInGb: 1
         environmentVariables:
           - name: MYSQL_ROOT_PASSWORD
@@ -107,8 +107,8 @@ properties:
         image: containerregistrybogdaniamnitchi30641.azurecr.io/device-microservice:latest
         resources:
           requests:
-            cpu: 1
-            memoryInGb: 1
+            cpu: 0.5
+            memoryInGb: 0.5
         environmentVariables:
           - name: KEYCLOAK_HOST
             value: keycloak
@@ -140,7 +140,6 @@ properties:
     - server: containerregistrybogdaniamnitchi30641.azurecr.io
       username: containerregistrybogdaniamnitchi30641
       password: hmrn3b8GzN9lIX23bdks5hv7qAXHpmaGgYW12DoOae+ACRDB7Eap
-tags: 
+tags:
   exampleTag: tutorial
 type: Microsoft.ContainerInstance/containerGroups
-
