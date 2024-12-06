@@ -13,7 +13,7 @@ export const environment = {
 
   chatURL: 'http://chat.localhost',
 
-  keycloakURL: 'http://containerregistrybogdaniamnitchi30641.azurecr.io:8080',
+  keycloakURL: 'http://bogdaniamnitchi30641user.germanywestcentral.azurecontainer.io:9980',
   keycloakRealm: 'energy-app',
   keycloakClientId: 'energy-app-id',
 };

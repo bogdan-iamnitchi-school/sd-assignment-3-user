@@ -5,6 +5,6 @@ COPY ./data /opt/keycloak/data
 ENV KEYCLOAK_ADMIN=admin
 ENV KEYCLOAK_ADMIN_PASSWORD=admin
 
-EXPOSE 8080
+EXPOSE 9980
 
 CMD ["start-dev"]

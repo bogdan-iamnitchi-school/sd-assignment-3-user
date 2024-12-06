@@ -33,7 +33,7 @@ properties:
           - name: KEYCLOAK_ADMIN_PASSWORD
             value: admin
         ports:
-          - port: 8080
+          - port: 9980
 
     # ums-mysql Service
     - name: ums-mysql
@@ -63,7 +63,7 @@ properties:
             memoryInGb: 0.5
         environmentVariables:
           - name: KEYCLOAK_HOST
-            value: containerregistrybogdaniamnitchi30641.azurecr.io
+            value: bogdaniamnitchi30641user.germanywestcentral.azurecontainer.io:9980
           - name: KEYCLOAK_REALM
             value: energy-app
           - name: DEVICE_HOST
@@ -109,7 +109,7 @@ properties:
             memoryInGb: 0.5
         environmentVariables:
           - name: KEYCLOAK_HOST
-            value: containerregistrybogdaniamnitchi30641.azurecr.io
+            value: bogdaniamnitchi30641user.germanywestcentral.azurecontainer.io:9980
           - name: KEYCLOAK_REALM
             value: energy-app
           - name: DB_IP
@@ -133,7 +133,7 @@ properties:
       - protocol: tcp
         port: 4200
       - protocol: tcp
-        port: 8080
+        port: 9980
       - protocol: tcp
         port: 8081
       - protocol: tcp
