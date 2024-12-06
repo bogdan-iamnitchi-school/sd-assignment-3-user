@@ -71,7 +71,7 @@ properties:
           - name: DEVICE_HOST
             value: "device-microservice"
           - name: DB_IP
-            value: "bogdaniamnitchi30641user.germanywestcentral.azurecontainer.io"
+            value: "localhost"
           - name: DB_PORT
             value: "3306"
           - name: DB_USER
@@ -83,48 +83,48 @@ properties:
         ports:
           - port: 8081
 
-    - name: dms-mysql
-      properties:
-        image: containerregistrybogdaniamnitchi30641.azurecr.io/mysql:5.7
-        resources:
-          requests:
-            cpu: 0.5
-            memoryInGb: 1
-        environmentVariables:
-          - name: MYSQL_ROOT_PASSWORD
-            value: admin@123
-          - name: MYSQL_DATABASE
-            value: device_db
-          - name: MYSQL_USER
-            value: dms_user
-          - name: MYSQL_PASSWORD
-            value: dms@123
-
-    # Device Microservice
-    - name: device-microservice
-      properties:
-        image: containerregistrybogdaniamnitchi30641.azurecr.io/device-microservice:latest
-        resources:
-          requests:
-            cpu: 0.5
-            memoryInGb: 0.5
-        environmentVariables:
-          - name: KEYCLOAK_HOST
-            value: "bogdaniamnitchi30641user.germanywestcentral.azurecontainer.io:9980"
-          - name: KEYCLOAK_REALM
-            value: "energy-app"
-          - name: DB_IP
-            value: "dms-mysql"
-          - name: DB_PORT
-            value: "3306"
-          - name: DB_USER
-            value: "dms_user"
-          - name: DB_PASSWORD
-            value: "dms@123"
-          - name: DB_DBNAME
-            value: "device_db"
-        ports:
-          - port: 8082
+#    - name: dms-mysql
+#      properties:
+#        image: containerregistrybogdaniamnitchi30641.azurecr.io/mysql:5.7
+#        resources:
+#          requests:
+#            cpu: 0.5
+#            memoryInGb: 1
+#        environmentVariables:
+#          - name: MYSQL_ROOT_PASSWORD
+#            value: admin@123
+#          - name: MYSQL_DATABASE
+#            value: device_db
+#          - name: MYSQL_USER
+#            value: dms_user
+#          - name: MYSQL_PASSWORD
+#            value: dms@123
+#
+#    # Device Microservice
+#    - name: device-microservice
+#      properties:
+#        image: containerregistrybogdaniamnitchi30641.azurecr.io/device-microservice:latest
+#        resources:
+#          requests:
+#            cpu: 0.5
+#            memoryInGb: 0.5
+#        environmentVariables:
+#          - name: KEYCLOAK_HOST
+#            value: "bogdaniamnitchi30641user.germanywestcentral.azurecontainer.io:9980"
+#          - name: KEYCLOAK_REALM
+#            value: "energy-app"
+#          - name: DB_IP
+#            value: "dms-mysql"
+#          - name: DB_PORT
+#            value: "3306"
+#          - name: DB_USER
+#            value: "dms_user"
+#          - name: DB_PASSWORD
+#            value: "dms@123"
+#          - name: DB_DBNAME
+#            value: "device_db"
+#        ports:
+#          - port: 8082
 
   osType: Linux
   ipAddress:
@@ -139,8 +139,8 @@ properties:
         port: 3306
       - protocol: tcp
         port: 8081
-      - protocol: tcp
-        port: 8082
+#      - protocol: tcp
+#        port: 8082
   imageRegistryCredentials:
     - server: containerregistrybogdaniamnitchi30641.azurecr.io
       username: containerregistrybogdaniamnitchi30641

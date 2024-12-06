@@ -77,12 +77,12 @@ stages:
 #        tags: |
 #          latest
 #
-    - task: Docker@2
-      displayName: Build and push device microservice image
-      inputs:
-        command: buildAndPush
-        repository: 'device-microservice'
-        dockerfile: '$(Build.SourcesDirectory)/energy-app-ws/device-microservice/Dockerfile'
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
-          latest
+#    - task: Docker@2
+#      displayName: Build and push device microservice image
+#      inputs:
+#        command: buildAndPush
+#        repository: 'device-microservice'
+#        dockerfile: '$(Build.SourcesDirectory)/energy-app-ws/device-microservice/Dockerfile'
+#        containerRegistry: $(dockerRegistryServiceConnection)
+#        tags: |
+#          latest
