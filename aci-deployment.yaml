@@ -38,7 +38,7 @@ properties:
     # ums-mysql Service
     - name: ums-mysql
       properties:
-        image: containerregistrybogdaniamnitchi30641.azurecr.io/mysql:latest
+        image: containerregistrybogdaniamnitchi30641.azurecr.io/mysql:5.7
         resources:
           requests:
             cpu: 0.5

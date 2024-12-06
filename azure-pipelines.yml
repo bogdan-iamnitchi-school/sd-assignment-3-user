@@ -47,15 +47,15 @@ stages:
 #        tags: |
 #          latest
 
-    - task: Docker@2
-      displayName: Build and push ums mysql image
-      inputs:
-        command: buildAndPush
-        repository: 'ums-mysql'
-        dockerfile: '$(Build.SourcesDirectory)/energy-app-ws/user-microservice/mysql/Dockerfile'
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
-          latest
+#    - task: Docker@2
+#      displayName: Build and push ums mysql image
+#      inputs:
+#        command: buildAndPush
+#        repository: 'ums-mysql'
+#        dockerfile: '$(Build.SourcesDirectory)/energy-app-ws/user-microservice/mysql/Dockerfile'
+#        containerRegistry: $(dockerRegistryServiceConnection)
+#        tags: |
+#          latest
 
     - task: Docker@2
       displayName: Build and push user microservice image
