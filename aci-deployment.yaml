@@ -1,6 +1,6 @@
 apiVersion: 2019-12-01
 location: germanywestcentral
-name: energy-app-containergroup
+name: user-containergroup
 properties:
   containers:
     # Frontend Service

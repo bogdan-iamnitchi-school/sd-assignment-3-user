@@ -1,0 +1,67 @@
+apiVersion: 2019-12-01
+location: germanywestcentral
+name: user-containergroup
+properties:
+  containers:
+    - name: ums-mysql
+      properties:
+        image: containerregistrybogdaniamnitchi30641.azurecr.io/mysql:5.7
+        resources:
+          requests:
+            cpu: 2
+            memoryInGb: 2
+        environmentVariables:
+          - name: MYSQL_ROOT_PASSWORD
+            value: admin@123
+          - name: MYSQL_DATABASE
+            value: user_db
+          - name: MYSQL_USER
+            value: ums_user
+          - name: MYSQL_PASSWORD
+            value: ums@123
+        ports:
+          - port: 3306
+
+    - name: user-microservice
+      properties:
+        image: containerregistrybogdaniamnitchi30641.azurecr.io/user-microservice:latest
+        resources:
+          requests:
+            cpu: 2
+            memoryInGb: 2
+        environmentVariables:
+          - name: KEYCLOAK_HOST
+            value: "bogdaniamnitchi30641user.germanywestcentral.azurecontainer.io:9980"
+          - name: KEYCLOAK_REALM
+            value: "energy-app"
+          - name: DEVICE_HOST
+            value: "device-microservice"
+          - name: DB_IP
+            value: "localhost"
+          - name: DB_PORT
+            value: "3306"
+          - name: DB_USER
+            value: "ums_user"
+          - name: DB_PASSWORD
+            value: "ums@123"
+          - name: DB_DBNAME
+            value: "user_db"
+        ports:
+          - port: 8081
+
+  osType: Linux
+  ipAddress:
+    type: Public
+    dnsNameLabel: user-containergroup
+    ports:
+      - protocol: tcp
+        port: 3306
+      - protocol: tcp
+        port: 8081
+  imageRegistryCredentials:
+    - server: containerregistrybogdaniamnitchi30641.azurecr.io
+      username: containerregistrybogdaniamnitchi30641
+      password: hmrn3b8GzN9lIX23bdks5hv7qAXHpmaGgYW12DoOae+ACRDB7Eap
+tags:
+  exampleTag: tutorial
+type: Microsoft.ContainerInstance/containerGroups

@@ -9,13 +9,11 @@ resources:
 - repo: self
 
 variables:
-  # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'cf4a6d48-507b-49df-8f11-f21684310fa1'
   containerRegistry: 'containerregistrybogdaniamnitchi30641.azurecr.io'
   tag: '$(Build.BuildId)'
 
-  # Agent pool name
-  agentPoolName: 'local'  # This is where we specify the local agent pool
+  agentPoolName: 'local'
 
 stages:
 - stage: Build
@@ -24,9 +22,8 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      name: $(agentPoolName)  # Use the local agent pool
+      name: $(agentPoolName)
     steps:
-    # Step 1: Build and push frontend image
 #    - task: Docker@2
 #      displayName: Build and push frontend image
 #      inputs:
@@ -71,18 +68,20 @@ stages:
 #      displayName: Build and push dms mysql image
 #      inputs:
 #        command: buildAndPush
-#        repository: 'dms-mysql'
+#        repository: 'mysql'
 #        dockerfile: '$(Build.SourcesDirectory)/energy-app-ws/device-microservice/mysql/Dockerfile'
 #        containerRegistry: $(dockerRegistryServiceConnection)
 #        tags: |
-#          latest
+#          "5.7"
 #
-#    - task: Docker@2
-#      displayName: Build and push device microservice image
-#      inputs:
-#        command: buildAndPush
-#        repository: 'device-microservice'
-#        dockerfile: '$(Build.SourcesDirectory)/energy-app-ws/device-microservice/Dockerfile'
-#        containerRegistry: $(dockerRegistryServiceConnection)
-#        tags: |
-#          latest
+    - task: Docker@2
+      displayName: Build and push device microservice image
+      inputs:
+        command: buildAndPush
+        repository: 'device-microservice'
+        dockerfile: '$(Build.SourcesDirectory)/energy-app-ws/device-microservice/Dockerfile'
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          latest
+  
+  
