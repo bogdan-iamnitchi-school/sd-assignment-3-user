@@ -1,6 +1,6 @@
 apiVersion: 2019-12-01
 location: germanywestcentral
-name: user-containergroup
+name: device-containergroup
 properties:
   containers:
     - name: dms-mysql
@@ -51,7 +51,7 @@ properties:
   osType: Linux
   ipAddress:
     type: Public
-    dnsNameLabel: bogdaniamnitchi30641user
+    dnsNameLabel: device-containergroup
     ports:
       - protocol: tcp
         port: 3306
