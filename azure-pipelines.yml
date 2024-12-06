@@ -31,7 +31,7 @@ stages:
       displayName: Build and push frontend image
       inputs:
         command: buildAndPush
-        repository: 'energy-app-ui'
+        repository: 'frontend'
         dockerfile: '$(Build.SourcesDirectory)/energy-app-ui/Dockerfile'
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
