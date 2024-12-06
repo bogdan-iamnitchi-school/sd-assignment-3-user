@@ -5,7 +5,7 @@ properties:
   containers:
     - name: keycloak
       properties:
-        image: containerregistrybogdaniamnitchi30641.azurecr.io/keycloak:24.0.2
+        image: containerregistrybogdaniamnitchi30641.azurecr.io/keycloak:23.0.5
         resources:
           requests:
             cpu: 1
