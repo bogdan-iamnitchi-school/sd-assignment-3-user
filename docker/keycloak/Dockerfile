@@ -7,7 +7,7 @@ ENV KEYCLOAK_ADMIN_PASSWORD=admin
 EXPOSE 8080
 
 # Copy your energy-app-keycloak.json file into the appropriate directory
-COPY energy-app-keycloak.json /opt/keycloak/data/import/
+COPY ./config/energy-app-keycloak.json /opt/keycloak/data/import/
 
 # Ensure the script has execution permissions
 RUN chmod +x /opt/keycloak/bin/kc.sh
