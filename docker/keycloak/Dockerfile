@@ -14,4 +14,4 @@ RUN chmod +x /opt/keycloak/bin/kc.sh
 EXPOSE 8080
 
 # Add the --import-realm flag to the entrypoint
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--import-realm"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--import-realm"]
