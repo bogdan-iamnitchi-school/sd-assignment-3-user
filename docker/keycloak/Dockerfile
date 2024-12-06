@@ -7,6 +7,8 @@ COPY ./data /opt/keycloak/data
 ENV KEYCLOAK_ADMIN=admin
 ENV KEYCLOAK_ADMIN_PASSWORD=admin
 
+USER root
+
 RUN whoami
 
 # Ensure the Keycloak script is executable
