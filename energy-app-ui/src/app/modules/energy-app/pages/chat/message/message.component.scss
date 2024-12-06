@@ -1,0 +1,29 @@
+.message-bubble {
+  max-width: 75%;
+  word-wrap: break-word;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.my-message {
+  background-color: #007bff; /* Bootstrap primary blue */
+  color: white; /* White text for contrast */
+  padding: 10px;
+  border-radius: 10px;
+  align-self: flex-end; /* Align to the right */
+}
+
+.their-message {
+  background-color: #f8f9fa; /* Light gray (default for Bootstrap cards) */
+  color: #212529; /* Dark text */
+  padding: 10px;
+  border-radius: 10px;
+  align-self: flex-start; /* Align to the left */
+}
+
+/* Optional: Add padding and shadow to the message bubble */
+.message-bubble {
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}

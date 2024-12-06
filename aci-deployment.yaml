@@ -1,0 +1,152 @@
+apiVersion: 2019-12-01
+location: germanywestcentral
+name: energy-app-containergroup
+properties:
+  containers:
+    # Frontend Service
+    - name: frontend
+      properties:
+        image: containerregistrybogdaniamnitchi30641.azurecr.io/energy-app-ui:latest
+        resources:
+          requests:
+            cpu: 1
+            memoryInGb: 1.5
+        environmentVariables:
+          - name: KEYCLOAK_HOST
+            value: keycloak
+          - name: KEYCLOAK_REALM
+            value: energy-app
+        ports:
+          - port: 4200
+        dependsOn:
+          - keycloak
+
+    # Keycloak Service
+    - name: keycloak
+      properties:
+        image: quay.io/keycloak/keycloak:24.0.2
+        resources:
+          requests:
+            cpu: 1
+            memoryInGb: 1
+        environmentVariables:
+          - name: KEYCLOAK_ADMIN
+            value: admin
+          - name: KEYCLOAK_ADMIN_PASSWORD
+            value: admin
+        ports:
+          - port: 8080
+        command:
+          - start-dev
+
+    # ums-mysql Service
+    - name: ums-mysql
+      properties:
+        image: mysql:5.7
+        resources:
+          requests:
+            cpu: 1
+            memoryInGb: 1
+        environmentVariables:
+          - name: MYSQL_ROOT_PASSWORD
+            value: admin@123
+          - name: MYSQL_DATABASE
+            value: user_db
+          - name: MYSQL_USER
+            value: ums_user
+          - name: MYSQL_PASSWORD
+            value: ums@123
+
+    # User Microservice
+    - name: user-microservice
+      properties:
+        image: containerregistrybogdaniamnitchi30641.azurecr.io/user-microservice:latest
+        resources:
+          requests:
+            cpu: 1
+            memoryInGb: 1
+        environmentVariables:
+          - name: KEYCLOAK_HOST
+            value: keycloak
+          - name: KEYCLOAK_REALM
+            value: energy-app
+          - name: DEVICE_HOST
+            value: device-microservice
+          - name: DB_IP
+            value: ums-mysql
+          - name: DB_PORT
+            value: 3306
+          - name: DB_USER
+            value: ums_user
+          - name: DB_PASSWORD
+            value: ums@123
+          - name: DB_DBNAME
+            value: user_db
+        ports:
+          - port: 8081
+        dependsOn:
+          - ums-mysql
+
+    # dms-mysql Service
+    - name: dms-mysql
+      properties:
+        image: mysql:5.7
+        resources:
+          requests:
+            cpu: 1
+            memoryInGb: 1
+        environmentVariables:
+          - name: MYSQL_ROOT_PASSWORD
+            value: admin@123
+          - name: MYSQL_DATABASE
+            value: device_db
+          - name: MYSQL_USER
+            value: dms_user
+          - name: MYSQL_PASSWORD
+            value: dms@123
+
+    # Device Microservice
+    - name: device-microservice
+      properties:
+        image: containerregistrybogdaniamnitchi30641.azurecr.io/device-microservice:latest
+        resources:
+          requests:
+            cpu: 1
+            memoryInGb: 1
+        environmentVariables:
+          - name: KEYCLOAK_HOST
+            value: keycloak
+          - name: KEYCLOAK_REALM
+            value: energy-app
+          - name: DB_IP
+            value: dms-mysql
+          - name: DB_PORT
+            value: 3306
+          - name: DB_USER
+            value: dms_user
+          - name: DB_PASSWORD
+            value: dms@123
+          - name: DB_DBNAME
+            value: device_db
+        ports:
+          - port: 8082
+        dependsOn:
+          - dms-mysql
+
+  osType: Linux
+  ipAddress:
+    type: Public
+    dnsNameLabel: bogdaniamnitchi30641user
+    ports:
+      - protocol: tcp
+        port: 8081
+      - protocol: tcp
+        port: 8082
+  imageRegistryCredentials:
+    - server: containerregistrybogdaniamnitchi30641.azurecr.io
+      username: containerregistrybogdaniamnitchi30641
+      password: hmrn3b8GzN9lIX23bdks5hv7qAXHpmaGgYW12DoOae+ACRDB7Eap
+tags: 
+  exampleTag: tutorial
+type: Microsoft.ContainerInstance/containerGroups
+

@@ -1,0 +1,53 @@
+/* Base styling for user-item */
+.user-item {
+  padding: 12px;
+  border-radius: 10px;
+  background-color: #f8f9fa; /* Default background color */
+  border: 1px solid #dee2e6; /* Border color */
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Hover effect */
+.user-item:hover {
+  background-color: #e9ecef; /* Slightly darker gray */
+}
+
+/* Styling for unread items */
+.unread-item {
+  background-color: #ffe6e6; /* Light reddish background for unread */
+  border-color: #ffcccc; /* Reddish border for unread items */
+}
+
+.selected-item {
+  background-color: #e9ecef; /* Light gray background */
+}
+
+.user-bubble {
+  width: 40px;
+  height: 40px;
+  color: white;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  text-transform: uppercase;
+}
+
+.unread-indicator {
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.user-name {
+  text-align: left;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+

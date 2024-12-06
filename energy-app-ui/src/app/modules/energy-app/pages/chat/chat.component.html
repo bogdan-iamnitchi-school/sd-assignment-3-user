@@ -1,0 +1,47 @@
+<div class="container-fluid m-2">
+  <div class="row h-100">
+    <!-- Sidebar with User List -->
+    <div class="users-list col-md-3 bg-light border d-flex flex-column p-3">
+      <h5 class="mb-3">Online Users</h5>
+      <app-user-list
+        [users]="users"
+        (userSelected)="handleUserSelectedEvent($event)"
+      ></app-user-list>
+      <div class="mt-auto">
+        <div class="fw-bold border-bottom border-top border-2 mb-2 py-2">
+          <span class="fw-bold ">You:&nbsp;</span>
+          <span>{{ profile?.firstName + ' ' + profile?.lastName }}</span>
+        </div>
+        <button class="btn btn-danger w-100" (click)="deleteAllMessages()">Delete all chats</button>
+      </div>
+    </div>
+
+    <!-- Chat Panel -->
+    <div class="col-md-9 d-flex flex-column" *ngIf="selectedUser">
+      <div #chatContainer class="chat-panel flex-grow-1 border p-3 overflow-auto">
+        <ng-container *ngIf="selectedUser">
+          <app-message
+            *ngFor="let msg of filteredMessages"
+            [message]="msg"
+          >
+          </app-message>
+        </ng-container>
+      </div>
+      <div class="input-group px-0 py-2 border-top">
+        <input type="text" class="form-control" [(ngModel)]="content" placeholder="Type a message..."
+               (keydown.enter)="sendMessage()" (focus)="onInputFocus()" (blur)="onInputBlur()"/>
+        <button class="btn btn-primary" (click)="sendMessage()">
+          <i class="fa fa-paper-plane"></i> Send
+        </button>
+      </div>
+    </div>
+
+    <!-- Default Panel -->
+    <div class="col-md-9 d-flex flex-column" *ngIf="!selectedUser">
+      <div
+        class="chat-panel flex-grow-1 border p-3 d-flex align-items-center justify-content-center position-relative">
+        <span class="text-muted" style="position: relative; top: -10%;">No conversation open, select a user</span>
+      </div>
+    </div>
+  </div>
+</div>
