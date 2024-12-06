@@ -99,8 +99,6 @@ properties:
             value: dms_user
           - name: MYSQL_PASSWORD
             value: dms@123
-        ports:
-          - port: 3306
 
     # Device Microservice
     - name: device-microservice
