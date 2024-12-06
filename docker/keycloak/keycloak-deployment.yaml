@@ -16,7 +16,7 @@ properties:
           - name: KEYCLOAK_ADMIN_PASSWORD
             value: admin
         ports:
-          - port: 8888
+          - port: 8080
 
   osType: Linux
   ipAddress:
@@ -24,7 +24,7 @@ properties:
     dnsNameLabel: keycloak-containergroup
     ports:
       - protocol: tcp
-        port: 8888
+        port: 8080
   imageRegistryCredentials:
     - server: containerregistrybogdaniamnitchi30641.azurecr.io
       username: containerregistrybogdaniamnitchi30641
