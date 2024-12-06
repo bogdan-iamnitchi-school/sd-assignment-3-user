@@ -18,8 +18,6 @@ properties:
             value: energy-app
         ports:
           - port: 4200
-        dependsOn:
-          - keycloak
 
     # Keycloak Service
     - name: keycloak
@@ -36,6 +34,9 @@ properties:
             value: admin
         ports:
           - port: 8080
+        volumeMounts:
+          - name: keycloak-data
+            mountPath: /opt/keycloak/data
         command:
           - start-dev
 
@@ -84,8 +85,6 @@ properties:
             value: user_db
         ports:
           - port: 8081
-        dependsOn:
-          - ums-mysql
 
     # dms-mysql Service
     - name: dms-mysql
@@ -130,8 +129,6 @@ properties:
             value: device_db
         ports:
           - port: 8082
-        dependsOn:
-          - dms-mysql
 
   osType: Linux
   ipAddress:
