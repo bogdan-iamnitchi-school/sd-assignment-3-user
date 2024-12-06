@@ -36,8 +36,27 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           latest
-          
-    # Step 2: Build and push user microservice image
+
+    - task: Docker@2
+      displayName: Build and push Keycloak image
+      inputs:
+        command: buildAndPush
+        repository: 'keycloak'
+        dockerfile: '$(Build.SourcesDirectory)/docker/keycloak/Dockerfile'
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          latest
+
+    - task: Docker@2
+      displayName: Build and push ums mysql image
+      inputs:
+        command: buildAndPush
+        repository: 'ums-mysql'
+        dockerfile: '$(Build.SourcesDirectory)/energy-app-ws/user-microservice/mysql/Dockerfile'
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          latest
+
     - task: Docker@2
       displayName: Build and push user microservice image
       inputs:
@@ -47,7 +66,17 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           latest
-          
+
+    - task: Docker@2
+      displayName: Build and push dms mysql image
+      inputs:
+        command: buildAndPush
+        repository: 'dms-mysql'
+        dockerfile: '$(Build.SourcesDirectory)/energy-app-ws/device-microservice/mysql/Dockerfile'
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          latest 
+
     # Step 3: Build and push device microservice image
     - task: Docker@2
       displayName: Build and push device microservice image
@@ -55,28 +84,6 @@ stages:
         command: buildAndPush
         repository: 'device-microservice'
         dockerfile: '$(Build.SourcesDirectory)/energy-app-ws/device-microservice/Dockerfile'
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
-          latest
-
-    # Step 4: Build and push MySQL image
-    - task: Docker@2
-      displayName: Build and push MySQL image
-      inputs:
-        command: buildAndPush
-        repository: 'mysql'
-        dockerfile: '$(Build.SourcesDirectory)/docker/mysql/Dockerfile'
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
-          latest
-
-    # Step 5: Build and push Keycloak image
-    - task: Docker@2
-      displayName: Build and push Keycloak image
-      inputs:
-        command: buildAndPush
-        repository: 'keycloak'
-        dockerfile: '$(Build.SourcesDirectory)/docker/keycloak/Dockerfile'
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           latest

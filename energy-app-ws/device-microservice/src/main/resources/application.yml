@@ -7,8 +7,8 @@ rabbitmq:
     device: ${RABBITMQ_EXCHANGE:device-topic-exchange}
 
 database:
-  ip: ${DB_IP:localhost}
-  port: ${DB_PORT:3308}
+  ip: ${DB_IP:dms-mysql}
+  port: ${DB_PORT:3306}
   user: ${DB_USER:dms_user}
   password: ${DB_PASSWORD:dms@123}
   name: ${DB_DBNAME:device_db}
@@ -27,7 +27,7 @@ spring:
     password: ${database.password}
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQLDialect

@@ -11,11 +11,11 @@ keycloak:
   server-url: "http://${keycloak.host}"
 
 device:
-  host: ${DEVICE_HOST:devices.localhost}
+  host: ${DEVICE_HOST:device-microservice}
 
 database:
-  ip: ${DB_IP:localhost}
-  port: ${DB_PORT:3307}
+  ip: ${DB_IP:dms-mysql}
+  port: ${DB_PORT:3306}
   user: ${DB_USER:ums_user}
   password: ${DB_PASSWORD:ums@123}
   name: ${DB_DBNAME:user_db}
