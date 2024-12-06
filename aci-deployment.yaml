@@ -126,7 +126,6 @@ properties:
           - port: 8082
 
   osType: Linux
-  restartPolicy: Never
   ipAddress:
     type: Public
     dnsNameLabel: bogdaniamnitchi30641user
