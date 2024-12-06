@@ -65,21 +65,21 @@ properties:
             memoryInGb: 0.5
         environmentVariables:
           - name: KEYCLOAK_HOST
-            value: bogdaniamnitchi30641user.germanywestcentral.azurecontainer.io:9980
+            value: "bogdaniamnitchi30641user.germanywestcentral.azurecontainer.io:9980"
           - name: KEYCLOAK_REALM
-            value: energy-app
+            value: "energy-app"
           - name: DEVICE_HOST
-            value: device-microservice
+            value: "device-microservice"
           - name: DB_IP
-            value: ums-mysql
+            value: "bogdaniamnitchi30641user.germanywestcentral.azurecontainer.io"
           - name: DB_PORT
-            value: 3306
+            value: "3306"
           - name: DB_USER
-            value: ums_user
+            value: "ums_user"
           - name: DB_PASSWORD
-            value: ums@123
+            value: "ums@123"
           - name: DB_DBNAME
-            value: user_db
+            value: "user_db"
         ports:
           - port: 8081
 
@@ -138,6 +138,8 @@ properties:
 #        port: 9980
       - protocol: tcp
         port: 8081
+      - protocol: tcp
+        port: 3306
 #      - protocol: tcp
 #        port: 8082
   imageRegistryCredentials:
