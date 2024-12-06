@@ -41,7 +41,7 @@ stages:
         repository: 'keycloak'
         dockerfile: '$(Build.SourcesDirectory)/docker/keycloak/Dockerfile'
         containerRegistry: $(dockerRegistryServiceConnection)
-        tags: 24.0.2
+        tags: 23.0.5
 
     - task: Docker@2
       displayName: Build and push mysql image
