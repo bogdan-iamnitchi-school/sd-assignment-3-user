@@ -34,14 +34,14 @@ stages:
         tags: |
           latest
 #
-    - task: Docker@2
-      displayName: Build and push Keycloak image
-      inputs:
-        command: buildAndPush
-        repository: 'keycloak'
-        dockerfile: '$(Build.SourcesDirectory)/docker/keycloak/Dockerfile'
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: 24.0.2
+#    - task: Docker@2
+#      displayName: Build and push Keycloak image
+#      inputs:
+#        command: buildAndPush
+#        repository: 'keycloak'
+#        dockerfile: '$(Build.SourcesDirectory)/docker/keycloak/Dockerfile'
+#        containerRegistry: $(dockerRegistryServiceConnection)
+#        tags: 24.0.2
 
     - task: Docker@2
       displayName: Build and push mysql image

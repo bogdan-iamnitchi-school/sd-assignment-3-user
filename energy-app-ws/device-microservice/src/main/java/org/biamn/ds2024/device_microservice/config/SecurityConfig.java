@@ -37,16 +37,15 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable) // Disable CSRF
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(SWAGGER_PATHS_TO_SKIP).permitAll() // Permit access to Swagger paths
-                        .anyRequest().authenticated() // Require authentication for other requests
+                        .anyRequest().permitAll() // Require authentication for other requests
                 )
-                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
                 .build();
     }
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:4200")); // Allow localhost:4200
+        configuration.setAllowedOrigins(Collections.singletonList("http://http://frontend-containergroup.germanywestcentral.azurecontainer.io:4200")); // Allow localhost:4200
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS")); // Allow specific methods
         configuration.setAllowedHeaders(Collections.singletonList("*")); // Allow all headers
         configuration.setAllowCredentials(true); // Allow credentials
