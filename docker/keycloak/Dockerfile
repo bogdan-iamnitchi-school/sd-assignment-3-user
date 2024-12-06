@@ -2,15 +2,14 @@ FROM quay.io/keycloak/keycloak:24.0.2
 
 ENV KEYCLOAK_ADMIN=admin
 ENV KEYCLOAK_ADMIN_PASSWORD=admin
+ENV KEYCLOAK_FRONTEND_URL="http://keycloak-containergroup.germanywestcentral.azurecontainer.io"
+ENV KEYCLOAK_HOSTNAME="keycloak-containergroup.germanywestcentral.azurecontainer.io"
 
 # Copy your energy-app-keycloak.json file into the appropriate directory
 COPY ./config/energy-app-keycloak.json /opt/keycloak/data/import/
 
 # Ensure the script has execution permissions
 RUN chmod +x /opt/keycloak/bin/kc.sh
-
-# Append the hostname to the keycloak.conf file
-RUN echo "hostname=keycloak-containergroup.germanywestcentral.azurecontainer.io" >> /opt/keycloak/conf/keycloak.conf
 
 EXPOSE 8080
 
