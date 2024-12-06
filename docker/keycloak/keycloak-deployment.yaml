@@ -5,10 +5,10 @@ properties:
   containers:
     - name: keycloak
       properties:
-        image: containerregistrybogdaniamnitchi30641.azurecr.io/keycloak:latest
+        image: containerregistrybogdaniamnitchi30641.azurecr.io/keycloak:24.0.2
         resources:
           requests:
-            cpu: 0.5
+            cpu: 1
             memoryInGb: 1
         environmentVariables:
           - name: KEYCLOAK_ADMIN
@@ -16,7 +16,7 @@ properties:
           - name: KEYCLOAK_ADMIN_PASSWORD
             value: admin
         ports:
-          - port: 8080
+          - port: 8888
 
   osType: Linux
   ipAddress:
@@ -24,7 +24,7 @@ properties:
     dnsNameLabel: keycloak-containergroup
     ports:
       - protocol: tcp
-        port: 8080
+        port: 8888
   imageRegistryCredentials:
     - server: containerregistrybogdaniamnitchi30641.azurecr.io
       username: containerregistrybogdaniamnitchi30641

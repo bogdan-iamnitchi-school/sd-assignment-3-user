@@ -5,6 +5,6 @@ COPY ./data /opt/keycloak/data
 ENV KEYCLOAK_ADMIN=admin
 ENV KEYCLOAK_ADMIN_PASSWORD=admin
 
-EXPOSE 8080
+RUN chmod +x /opt/keycloak/bin/kc.sh
 
-CMD ["start-dev"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev"]

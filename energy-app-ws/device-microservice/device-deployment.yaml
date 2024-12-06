@@ -32,7 +32,7 @@ properties:
             memoryInGb: 1
         environmentVariables:
           - name: KEYCLOAK_HOST
-            value: "keycloak-containergroup.germanywestcentral.azurecontainer.io:8080"
+            value: "keycloak-containergroup.germanywestcentral.azurecontainer.io:8888"
           - name: KEYCLOAK_REALM
             value: "energy-app"
           - name: DB_IP
