@@ -52,6 +52,8 @@ properties:
             value: ums_user
           - name: MYSQL_PASSWORD
             value: ums@123
+        ports:
+          - port: 3306
 
     # User Microservice
     - name: user-microservice
