@@ -1,6 +1,6 @@
 apiVersion: 2019-12-01
 location: germanywestcentral
-name: user-containergroup
+name: frontend-containergroup
 properties:
   containers:
     - name: frontend
@@ -21,7 +21,7 @@ properties:
   osType: Linux
   ipAddress:
     type: Public
-    dnsNameLabel: bogdaniamnitchi30641user
+    dnsNameLabel: frontend-containergroup
     ports:
       - protocol: tcp
         port: 4200
