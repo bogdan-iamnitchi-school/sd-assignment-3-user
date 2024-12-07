@@ -17,8 +17,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let device of devices"
-              [class.table-active]="device.id === selectedDevice?.id"
-              (click)="selectDevice(device)">
+              [class.table-active]="device.id === selectedDevice?.id">
             <td class="truncate-id">{{ device.id }}</td>
             <td>{{ device.name }}</td>
             <td>{{ device.location }}</td>

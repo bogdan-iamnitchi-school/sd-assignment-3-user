@@ -14,6 +14,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -38,15 +39,16 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(SWAGGER_PATHS_TO_SKIP).permitAll()
-                        .anyRequest().permitAll()
+                        .anyRequest().authenticated()
                 )
+                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
                 .build();
     }
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Collections.singletonList("http://frontend-containergroup.germanywestcentral.azurecontainer.io:4200"));
+        configuration.setAllowedOrigins(List.of("http://localhost:4200", "http://frontend-containergroup.germanywestcentral.azurecontainer.io:4200"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Collections.singletonList("*"));
         configuration.setAllowCredentials(true);

@@ -60,7 +60,7 @@ export class MonitorComponent implements OnInit {
           role: this.getSingleRole(this.keycloakService.getKeycloakInstance().realmAccess?.roles),
         };
         this.loadDevices(this.user.id || '');
-        this.initWebsocket(this.user.id || '');
+        // this.initWebsocket(this.user.id || '');
       });
   }
 

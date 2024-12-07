@@ -47,11 +47,11 @@ public class DeviceService {
                 )));
         DeviceEntity deviceToBeAdded = deviceMapper.deviceRequestDTOToDeviceEntity(deviceRequestDTO, userToBeAdded);
         DeviceEntity deviceAdded  = deviceRepository.save(deviceToBeAdded);
-        try {
-            deviceProducer.produceMessage(deviceMapper.deviceEntityToDeviceResponseDTO(deviceAdded), "insert");
-        } catch (Exception e) {
-            log.error("Error while producing insert message: {}", e.getMessage());
-        }
+//        try {
+//            deviceProducer.produceMessage(deviceMapper.deviceEntityToDeviceResponseDTO(deviceAdded), "insert");
+//        } catch (Exception e) {
+//            log.error("Error while producing insert message: {}", e.getMessage());
+//        }
         return deviceMapper.deviceEntityToDeviceResponseDTO(deviceAdded);
     }
 
@@ -116,11 +116,11 @@ public class DeviceService {
                 ))));
 
         DeviceEntity updatedDeviceEntity = deviceRepository.save(deviceEntity);
-        try {
-            deviceProducer.produceMessage(deviceMapper.deviceEntityToDeviceResponseDTO(updatedDeviceEntity), "update");
-        } catch (Exception e) {
-            log.error("Error while producing update message: {}", e.getMessage());
-        }
+//        try {
+//            deviceProducer.produceMessage(deviceMapper.deviceEntityToDeviceResponseDTO(updatedDeviceEntity), "update");
+//        } catch (Exception e) {
+//            log.error("Error while producing update message: {}", e.getMessage());
+//        }
         return deviceMapper.deviceEntityToDeviceResponseDTO(updatedDeviceEntity);
     }
 
@@ -129,11 +129,11 @@ public class DeviceService {
             throw new ResourceNotFoundException(String.format(
                     ExceptionCode.ERR001_DEVICE_NOT_FOUND.getMessage(), deviceId));
         }
-        try {
-            deviceProducer.produceMessage(deviceId.toString(), "delete");
-        } catch (Exception e) {
-            log.error("Error while producing delete message: {}", e.getMessage());
-        }
+//        try {
+//            deviceProducer.produceMessage(deviceId.toString(), "delete");
+//        } catch (Exception e) {
+//            log.error("Error while producing delete message: {}", e.getMessage());
+//        }
         deviceRepository.deleteById(deviceId);
     }
 
