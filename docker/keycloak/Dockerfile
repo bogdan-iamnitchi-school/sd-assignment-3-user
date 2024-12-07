@@ -2,8 +2,6 @@ FROM quay.io/keycloak/keycloak:23.0.5
 
 ENV KEYCLOAK_ADMIN=admin
 ENV KEYCLOAK_ADMIN_PASSWORD=admin
-ENV KEYCLOAK_FRONTEND_URL="http://keycloak-containergroup.germanywestcentral.azurecontainer.io"
-ENV KEYCLOAK_HOSTNAME="keycloak-containergroup.germanywestcentral.azurecontainer.io"
 
 # Copy your energy-app-keycloak.json file into the appropriate directory
 COPY ./config/energy-app-keycloak.json /opt/keycloak/data/import/
